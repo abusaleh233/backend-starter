@@ -1,0 +1,8 @@
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../generated/prisma/client";
+import { env } from "../config";
+
+// Prisma 8 has no Rust engine — a driver adapter is required.
+const adapter = new PrismaPg({ connectionString: env.databaseUrl });
+
+export const prisma = new PrismaClient({ adapter });
